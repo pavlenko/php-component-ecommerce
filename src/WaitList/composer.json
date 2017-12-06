@@ -1,0 +1,11 @@
+{
+  "name": "cmf/component-ecommerce-wait-list",
+  "description": "Wait list component, collect products which currently are out of stock, and when they become in stock user notified about this",
+  "require": {
+    "cmf/component-ecommerce-core": "self.version",
+    "cmf/component-ecommerce-customer": "self.version",
+    "cmf/component-ecommerce-product": "self.version"
+  },
+  "require-dev": {},
+  "suggest": {}
+}

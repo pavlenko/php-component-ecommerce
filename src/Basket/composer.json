@@ -1,0 +1,20 @@
+{
+  "name": "cmf/component-ecommerce-basket",
+  "description": "Basket component, basically stored in session",
+  "require": {
+    "cmf/component-ecommerce-order": "self.version",
+    "cmf/component-ecommerce-product": "self.version"
+  },
+  "require-dev": {
+    "cmf/component-ecommerce-customer": "self.version",
+    "cmf/component-ecommerce-delivery": "self.version",
+    "cmf/component-ecommerce-discount": "self.version",
+    "cmf/component-ecommerce-payment": "self.version"
+  },
+  "suggest": {
+    "cmf/component-ecommerce-customer": "If basket can be assigned to customer",
+    "cmf/component-ecommerce-delivery": "If basket can contain delivery",
+    "cmf/component-ecommerce-discount": "If basket can contain discounts",
+    "cmf/component-ecommerce-payment": "If basket can contain payment"
+  }
+}

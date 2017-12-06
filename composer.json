@@ -1,0 +1,44 @@
+{
+  "config": {
+    "sort-packages": true
+  },
+  "name": "pe/component-ecommerce",
+  "description": "E-commerce components repository",
+  "keywords": ["e-commerce"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pavlenko Eugeniy",
+      "email": "pavlenko.obs@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "pe/component-query": "^1.0",
+    "pe/simple-di": "^1.0",
+    "psr/event-manager-implementation": "^1.0"
+  },
+  "require-dev": {
+    "pe/component-event-manager": "^1.0",
+    "phpunit/phpunit": "~5.0",
+    "symfony/var-dumper": "^3.3"
+  },
+  "suggest": {
+    "pe/component-event-manager": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "PE\\Component\\ECommerce\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PETest\\Component\\ECommerce\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}

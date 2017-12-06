@@ -1,0 +1,7 @@
+{
+  "name": "cmf/component-ecommerce-product",
+  "description": "Product component",
+  "require": {},
+  "require-dev": {},
+  "suggest": {}
+}

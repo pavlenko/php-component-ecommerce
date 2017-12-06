@@ -1,0 +1,7 @@
+{
+  "name": "cmf/component-ecommerce-category",
+  "description": "Category component, provides product hierarchy",
+  "require": {},
+  "require-dev": {},
+  "suggest": {}
+}

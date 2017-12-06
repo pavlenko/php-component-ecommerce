@@ -1,0 +1,10 @@
+{
+  "name": "cmf/component-ecommerce-product-variation",
+  "description": "Product variations component, provide a product variations by some attribute",
+  "require": {
+    "cmf/component-ecommerce-core": "self.version",
+    "cmf/component-ecommerce-product": "self.version"
+  },
+  "require-dev": {},
+  "suggest": {}
+}

@@ -1,0 +1,10 @@
+{
+  "name": "cmf/component-ecommerce-product-bundle",
+  "description": "Product bundle component, provide a collection of products as single bundle (kit), with possibility to select each item option",
+  "require": {
+    "cmf/component-ecommerce-core": "self.version",
+    "cmf/component-ecommerce-product": "self.version"
+  },
+  "require-dev": {},
+  "suggest": {}
+}

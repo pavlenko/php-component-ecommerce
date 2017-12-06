@@ -1,0 +1,10 @@
+{
+  "name": "cmf/component-ecommerce-product-solution",
+  "description": "Product solution component, provide a collection of products as single solution (fixed kit)",
+  "require": {
+    "cmf/component-ecommerce-core": "self.version",
+    "cmf/component-ecommerce-product": "self.version"
+  },
+  "require-dev": {},
+  "suggest": {}
+}

@@ -1,0 +1,7 @@
+{
+  "name": "cmf/component-ecommerce-payment",
+  "description": "Payment component, provide payment methods and payment gateway processing",
+  "require": {},
+  "require-dev": {},
+  "suggest": {}
+}

@@ -1,0 +1,11 @@
+{
+  "name": "cmf/component-ecommerce-wish-list",
+  "description": "Wish list component, collect product for buy later",
+  "require": {
+    "cmf/component-ecommerce-core": "self.version",
+    "cmf/component-ecommerce-customer": "self.version",
+    "cmf/component-ecommerce-product": "self.version"
+  },
+  "require-dev": {},
+  "suggest": {}
+}

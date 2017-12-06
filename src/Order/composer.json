@@ -1,0 +1,21 @@
+{
+  "name": "cmf/component-ecommerce-order",
+  "description": "Order component, basically stored in database",
+  "require": {
+    "cmf/component-ecommerce-product": "self.version"
+  },
+  "require-dev": {
+    "cmf/component-ecommerce-basket": "self.version",
+    "cmf/component-ecommerce-customer": "self.version",
+    "cmf/component-ecommerce-delivery": "self.version",
+    "cmf/component-ecommerce-discount": "self.version",
+    "cmf/component-ecommerce-payment": "self.version"
+  },
+  "suggest": {
+    "cmf/component-ecommerce-basket": "If order can be created from basket",
+    "cmf/component-ecommerce-customer": "If order can be assigned to customer, ? how to store contacts in order without customer",
+    "cmf/component-ecommerce-delivery": "If order can contain delivery",
+    "cmf/component-ecommerce-discount": "If order can contain discounts",
+    "cmf/component-ecommerce-payment": "If order can contain payment"
+  }
+}

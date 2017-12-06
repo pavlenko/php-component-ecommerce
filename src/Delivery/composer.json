@@ -1,0 +1,7 @@
+{
+  "name": "cmf/component-ecommerce-delivery",
+  "description": "Delivery component, provide delivery methods and delivery cost processing",
+  "require": {},
+  "require-dev": {},
+  "suggest": {}
+}

@@ -1,0 +1,2 @@
+- load product list with pagination and sort
+- add hook method to override load products list

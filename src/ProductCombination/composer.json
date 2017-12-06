@@ -1,0 +1,10 @@
+{
+  "name": "cmf/component-ecommerce-product-combination",
+  "description": "Product combinations component, provide a product combinations based on fixed list of attributes",
+  "require": {
+    "cmf/component-ecommerce-core": "self.version",
+    "cmf/component-ecommerce-product": "self.version"
+  },
+  "require-dev": {},
+  "suggest": {}
+}

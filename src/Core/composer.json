@@ -1,0 +1,7 @@
+{
+  "name": "cmf/component-ecommerce-core",
+  "description": "Core component, provides extensible centralized e-commerce object",
+  "require": {},
+  "require-dev": {},
+  "suggest": {}
+}
