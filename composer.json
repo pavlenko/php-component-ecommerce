@@ -15,7 +15,7 @@
   "require": {
     "php": ">=5.5",
     "pe/component-query": "^1.0",
-    "pe/simple-di": "^1.0",
+    "pe/component-simple-di": "^1.0",
     "psr/event-manager-implementation": "^1.0"
   },
   "require-dev": {
