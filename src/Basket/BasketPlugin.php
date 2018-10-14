@@ -6,6 +6,7 @@ use PE\Component\ECommerce\Basket\Loader\BasketLoader;
 use PE\Component\ECommerce\Basket\Repository\BasketRepositoryInterface;
 use PE\Component\ECommerce\Core\Exception\ImplementationRequiredException;
 use PE\Component\SimpleDI\Container;
+use PE\Component\SimpleDI\Exception\ExceptionInterface;
 use PE\Component\SimpleDI\ServiceProviderInterface;
 
 class BasketPlugin implements ServiceProviderInterface

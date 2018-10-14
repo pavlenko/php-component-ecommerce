@@ -4,7 +4,7 @@ namespace PE\Component\ECommerce\Basket\Controller;
 
 use PE\Component\ECommerce\Basket\Entity\BasketElement;
 use PE\Component\ECommerce\Basket\Factory\BasketFactory;
-use PE\Component\ECommerce\Basket\Loader\BasketLoader;
+use PE\Component\ECommerce\Basket\Loader\BasketLoaderInterface;
 use PE\Component\ECommerce\Basket\Repository\BasketRepositoryInterface;
 use PE\Component\ECommerce\Core\View\View;
 use PE\Component\ECommerce\Product\Repository\ProductRepositoryInterface;
@@ -12,7 +12,7 @@ use PE\Component\ECommerce\Product\Repository\ProductRepositoryInterface;
 class BasketController
 {
     /**
-     * @var BasketLoader
+     * @var BasketLoaderInterface
      */
     private $basketLoader;
 
