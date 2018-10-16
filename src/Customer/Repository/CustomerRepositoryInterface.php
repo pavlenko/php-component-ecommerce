@@ -3,16 +3,16 @@
 namespace PE\Component\ECommerce\Customer\Repository;
 
 use PE\Component\ECommerce\Core\Repository\RepositoryInterface;
-use PE\Component\ECommerce\Customer\Entity\Customer;
+use PE\Component\ECommerce\Customer\Model\CustomerInterface;
 use PE\Component\Query\Query;
 
 /**
- * @method Customer   findOneByID($identifier)
- * @method Customer[] findAllByID(array $identifiers)
- * @method Customer   findOneBy(Query $query)
- * @method Customer[] findAllBy(Query $query)
- * @method Customer   get($identifier)
- * @method Customer   create()
+ * @method CustomerInterface   findOneByID($identifier)
+ * @method CustomerInterface[] findAllByID(array $identifiers)
+ * @method CustomerInterface   findOneBy(Query $query)
+ * @method CustomerInterface[] findAllBy(Query $query)
+ * @method CustomerInterface   get($identifier)
+ * @method CustomerInterface   create()
  */
 interface CustomerRepositoryInterface extends RepositoryInterface
 {}

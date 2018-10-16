@@ -3,7 +3,7 @@
 namespace PE\Component\ECommerce\WaitList\Repository;
 
 use PE\Component\ECommerce\Core\Repository\RepositoryInterface;
-use PE\Component\ECommerce\Customer\Entity\Customer;
+use PE\Component\ECommerce\Customer\Model\CustomerInterface;
 use PE\Component\ECommerce\WaitList\Entity\WaitList;
 use PE\Component\Query\Query;
 
@@ -18,9 +18,9 @@ use PE\Component\Query\Query;
 interface WaitListRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @param Customer $customer
+     * @param CustomerInterface $customer
      *
      * @return WaitList|null
      */
-    public function findByCustomer(Customer $customer);
+    public function findByCustomer(CustomerInterface $customer);
 }

@@ -2,7 +2,7 @@
 
 namespace PE\Component\ECommerce\Customer\Loader;
 
-use PE\Component\ECommerce\Customer\Entity\Customer;
+use PE\Component\ECommerce\Customer\Model\CustomerInterface;
 
 /**
  * This class loads customer for current user
@@ -10,7 +10,7 @@ use PE\Component\ECommerce\Customer\Entity\Customer;
 abstract class CustomerLoader
 {
     /**
-     * @return Customer
+     * @return CustomerInterface
      */
     abstract public function load();
 }

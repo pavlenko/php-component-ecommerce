@@ -3,7 +3,7 @@
 namespace PE\Component\ECommerce\WishList\Repository;
 
 use PE\Component\ECommerce\Core\Repository\RepositoryInterface;
-use PE\Component\ECommerce\Customer\Entity\Customer;
+use PE\Component\ECommerce\Customer\Model\CustomerInterface;
 use PE\Component\ECommerce\WishList\Entity\WishList;
 use PE\Component\Query\Query;
 
@@ -18,9 +18,9 @@ use PE\Component\Query\Query;
 interface WishListRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @param Customer $customer
+     * @param CustomerInterface $customer
      *
      * @return WishList|null
      */
-    public function findByCustomer(Customer $customer);
+    public function findByCustomer(CustomerInterface $customer);
 }

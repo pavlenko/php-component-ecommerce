@@ -3,7 +3,7 @@
 namespace PE\Component\ECommerce\Customer\Factory;
 
 use PE\Component\ECommerce\Core\View\View;
-use PE\Component\ECommerce\Customer\Entity\Customer;
+use PE\Component\ECommerce\Customer\Model\CustomerInterface;
 
 class CustomerFactory
 {
@@ -21,12 +21,12 @@ class CustomerFactory
     }
 
     /**
-     * @param Customer $customer
+     * @param CustomerInterface $customer
      * @param array    $options
      *
      * @return View
      */
-    public function createView(Customer $customer, array $options = [])
+    public function createView(CustomerInterface $customer, array $options = [])
     {
         //TODO fill data
         $view = new View([]);

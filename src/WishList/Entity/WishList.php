@@ -2,20 +2,18 @@
 
 namespace PE\Component\ECommerce\WishList\Entity;
 
-use PE\Component\ECommerce\Customer\Entity\Customer;
+use PE\Component\ECommerce\Customer\Model\CustomerAwareInterface;
+use PE\Component\ECommerce\Customer\Model\CustomerAwareTrait;
 use PE\Component\ECommerce\Product\Entity\Product;
 
-class WishList
+class WishList implements CustomerAwareInterface
 {
+    use CustomerAwareTrait;
+
     /**
      * @var int
      */
     private $id;
-
-    /**
-     * @var Customer
-     */
-    private $customer;
 
     /**
      * @var Product[]
@@ -38,25 +36,6 @@ class WishList
     public function setId($id)
     {
         $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return Customer
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
-
-    /**
-     * @param Customer $customer
-     *
-     * @return WishList
-     */
-    public function setCustomer(Customer $customer)
-    {
-        $this->customer = $customer;
         return $this;
     }
 
