@@ -5,6 +5,7 @@ namespace PE\Component\ECommerce\Order\Model;
 class Order implements OrderInterface
 {
     protected $id;
+    protected $contact;
     protected $purchases = [];
 
     /**
@@ -21,6 +22,23 @@ class Order implements OrderInterface
     public function setID($id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setContact(ContactInterface $contact)
+    {
+        $this->contact = $contact;
         return $this;
     }
 

@@ -17,6 +17,18 @@ interface OrderInterface
     public function setID($id);
 
     /**
+     * @return ContactInterface
+     */
+    public function getContact();
+
+    /**
+     * @param ContactInterface $contact
+     *
+     * @return self
+     */
+    public function setContact(ContactInterface $contact);
+
+    /**
      * @return PurchaseInterface[]
      */
     public function getPurchases();
