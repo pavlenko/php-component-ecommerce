@@ -51,9 +51,9 @@ class Basket implements BasketInterface
     /**
      * @inheritDoc
      */
-    public function removePurchase(PurchaseInterface $element)
+    public function removePurchase(PurchaseInterface $purchase)
     {
-        if (false !== ($key = array_search($element, $this->purchases, true))) {
+        if (false !== ($key = array_search($purchase, $this->purchases, true))) {
             unset($this->purchases[$key]);
         }
 

@@ -31,9 +31,9 @@ interface BasketInterface extends MetadataAwareInterface
     public function addPurchase(PurchaseInterface $purchase);
 
     /**
-     * @param PurchaseInterface $element
+     * @param PurchaseInterface $purchase
      *
      * @return self
      */
-    public function removePurchase(PurchaseInterface $element);
+    public function removePurchase(PurchaseInterface $purchase);
 }
