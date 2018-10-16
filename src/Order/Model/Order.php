@@ -1,13 +1,9 @@
 <?php
 
-namespace PE\Component\ECommerce\Basket\Model;
+namespace PE\Component\ECommerce\Order\Model;
 
-use PE\Component\ECommerce\Core\Model\MetadataAwareTrait;
-
-class Basket implements BasketInterface
+class Order implements OrderInterface
 {
-    use MetadataAwareTrait;
-
     protected $id;
     protected $purchases = [];
 
