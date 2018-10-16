@@ -1,10 +1,8 @@
 <?php
 
-namespace PE\Component\ECommerce\Basket\Model;
+namespace PE\Component\ECommerce\Order\Model;
 
-use PE\Component\ECommerce\Core\Model\MetadataAwareInterface;
-
-interface BasketInterface extends MetadataAwareInterface
+interface OrderInterface
 {
     /**
      * @return string
@@ -31,9 +29,9 @@ interface BasketInterface extends MetadataAwareInterface
     public function addPurchase(PurchaseInterface $purchase);
 
     /**
-     * @param PurchaseInterface $element
+     * @param PurchaseInterface $purchase
      *
      * @return self
      */
-    public function removePurchase(PurchaseInterface $element);
+    public function removePurchase(PurchaseInterface $purchase);
 }
