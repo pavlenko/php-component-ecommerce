@@ -19,21 +19,21 @@ interface BasketInterface extends MetadataAwareInterface
     public function setID($id);
 
     /**
-     * @return PurchaseInterface[]
+     * @return BasketElementInterface[]
      */
     public function getPurchases();
 
     /**
-     * @param PurchaseInterface $purchase
+     * @param BasketElementInterface $purchase
      *
      * @return self
      */
-    public function addPurchase(PurchaseInterface $purchase);
+    public function addPurchase(BasketElementInterface $purchase);
 
     /**
-     * @param PurchaseInterface $purchase
+     * @param BasketElementInterface $purchase
      *
      * @return self
      */
-    public function removePurchase(PurchaseInterface $purchase);
+    public function removePurchase(BasketElementInterface $purchase);
 }

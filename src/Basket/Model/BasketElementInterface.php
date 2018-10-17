@@ -2,7 +2,7 @@
 
 namespace PE\Component\ECommerce\Basket\Model;
 
-interface PurchaseInterface
+interface BasketElementInterface
 {
     /**
      * @return string

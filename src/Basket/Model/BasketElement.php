@@ -2,7 +2,7 @@
 
 namespace PE\Component\ECommerce\Basket\Model;
 
-class Purchase implements PurchaseInterface
+class BasketElement implements BasketElementInterface
 {
     protected $id;
     protected $quantity = 0;

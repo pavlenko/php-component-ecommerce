@@ -39,7 +39,7 @@ class Basket implements BasketInterface
     /**
      * @inheritDoc
      */
-    public function addPurchase(PurchaseInterface $purchase)
+    public function addPurchase(BasketElementInterface $purchase)
     {
         if (false === array_search($purchase, $this->purchases, true)) {
             $this->purchases[] = $purchase;
@@ -51,7 +51,7 @@ class Basket implements BasketInterface
     /**
      * @inheritDoc
      */
-    public function removePurchase(PurchaseInterface $purchase)
+    public function removePurchase(BasketElementInterface $purchase)
     {
         if (false !== ($key = array_search($purchase, $this->purchases, true))) {
             unset($this->purchases[$key]);
