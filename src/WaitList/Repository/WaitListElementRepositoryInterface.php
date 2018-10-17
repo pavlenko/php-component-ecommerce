@@ -2,16 +2,19 @@
 
 namespace PE\Component\ECommerce\WaitList\Repository;
 
+use PE\Component\ECommerce\Customer\Model\CustomerInterface;
+use PE\Component\ECommerce\Product\Entity\Product;
 use PE\Component\ECommerce\WaitList\Model\WaitListElementInterface;
 
 interface WaitListElementRepositoryInterface
 {
     /**
-     * @param string $id
+     * @param CustomerInterface $customer
+     * @param Product           $product
      *
      * @return null|WaitListElementInterface
      */
-    public function findByID($id);
+    public function findByCustomerAndProduct(CustomerInterface $customer, Product $product);
 
     /**
      * @return WaitListElementInterface
