@@ -19,6 +19,18 @@ interface WaitListElementInterface
     public function setID($id);
 
     /**
+     * @return WaitListInterface
+     */
+    public function getWaitList();
+
+    /**
+     * @param WaitListInterface $waitList
+     *
+     * @return self
+     */
+    public function setWaitList(WaitListInterface $waitList);
+
+    /**
      * @return ProductInterface
      */
     public function getProduct();

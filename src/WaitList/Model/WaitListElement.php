@@ -7,6 +7,7 @@ use PE\Component\ECommerce\Product\Model\ProductInterface;
 class WaitListElement implements WaitListElementInterface
 {
     protected $id;
+    protected $waitList;
     protected $product;
     protected $createdAt;
 
@@ -24,6 +25,23 @@ class WaitListElement implements WaitListElementInterface
     public function setID($id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getWaitList()
+    {
+        return $this->waitList;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setWaitList(WaitListInterface $waitList)
+    {
+        $this->waitList = $waitList;
         return $this;
     }
 
