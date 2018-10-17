@@ -2,7 +2,9 @@
 
 namespace PE\Component\ECommerce\WaitList\Model;
 
-interface WaitListInterface
+use PE\Component\ECommerce\Customer\Model\CustomerAwareInterface;
+
+interface WaitListInterface extends CustomerAwareInterface
 {
     /**
      * @return string

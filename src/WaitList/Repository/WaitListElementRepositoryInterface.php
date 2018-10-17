@@ -7,6 +7,13 @@ use PE\Component\ECommerce\WaitList\Model\WaitListElementInterface;
 interface WaitListElementRepositoryInterface
 {
     /**
+     * @param string $id
+     *
+     * @return null|WaitListElementInterface
+     */
+    public function findByID($id);
+
+    /**
      * @return WaitListElementInterface
      */
     public function createWaitListElement();

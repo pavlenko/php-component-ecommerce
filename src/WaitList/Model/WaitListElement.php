@@ -8,6 +8,7 @@ class WaitListElement implements WaitListElementInterface
 {
     protected $id;
     protected $product;
+    protected $createdAt;
 
     /**
      * @inheritDoc
@@ -40,6 +41,23 @@ class WaitListElement implements WaitListElementInterface
     public function setProduct(ProductInterface $product)
     {
         $this->product = $product;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
         return $this;
     }
 }

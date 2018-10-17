@@ -29,4 +29,16 @@ interface WaitListElementInterface
      * @return self
      */
     public function setProduct(ProductInterface $product);
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt();
+
+    /**
+     * @param \DateTime $createdAt
+     *
+     * @return self
+     */
+    public function setCreatedAt(\DateTime $createdAt);
 }

@@ -2,20 +2,11 @@
 
 namespace PE\Component\ECommerce\WaitList\Repository;
 
-use PE\Component\ECommerce\Core\Repository\RepositoryInterface;
 use PE\Component\ECommerce\Customer\Model\CustomerInterface;
 use PE\Component\ECommerce\WaitList\Entity\WaitList;
-use PE\Component\Query\Query;
+use PE\Component\ECommerce\WaitList\Model\WaitListInterface;
 
-/**
- * @method WaitList   findOneByID($identifier)
- * @method WaitList[] findAllByID(array $identifiers)
- * @method WaitList   findOneBy(Query $query)
- * @method WaitList[] findAllBy(Query $query)
- * @method WaitList   get($identifier)
- * @method WaitList   create()
- */
-interface WaitListRepositoryInterface extends RepositoryInterface
+interface WaitListRepositoryInterface
 {
     /**
      * @param CustomerInterface $customer
@@ -23,4 +14,21 @@ interface WaitListRepositoryInterface extends RepositoryInterface
      * @return WaitList|null
      */
     public function findByCustomer(CustomerInterface $customer);
+
+    /**
+     * @return WaitListInterface
+     */
+    public function createWaitList();
+
+    /**
+     * @param WaitListInterface $element
+     * @param bool              $flush
+     */
+    public function updateWaitList(WaitListInterface $element, $flush = true);
+
+    /**
+     * @param WaitListInterface $element
+     * @param bool              $flush
+     */
+    public function removeWaitList(WaitListInterface $element, $flush = true);
 }

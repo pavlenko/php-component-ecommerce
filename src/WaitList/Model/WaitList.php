@@ -2,8 +2,12 @@
 
 namespace PE\Component\ECommerce\WaitList\Model;
 
+use PE\Component\ECommerce\Customer\Model\CustomerAwareTrait;
+
 class WaitList implements WaitListInterface
 {
+    use CustomerAwareTrait;
+
     protected $id;
     protected $elements = [];
 
