@@ -2,25 +2,34 @@
 
 namespace PE\Component\ECommerce\WishList\Repository;
 
-use PE\Component\ECommerce\Core\Repository\RepositoryInterface;
 use PE\Component\ECommerce\Customer\Model\CustomerInterface;
-use PE\Component\ECommerce\WishList\Entity\WishList;
-use PE\Component\Query\Query;
+use PE\Component\ECommerce\WishList\Model\WishListInterface;
 
-/**
- * @method WishList   findOneByID($identifier)
- * @method WishList[] findAllByID(array $identifiers)
- * @method WishList   findOneBy(Query $query)
- * @method WishList[] findAllBy(Query $query)
- * @method WishList   get($identifier)
- * @method WishList   create()
- */
-interface WishListRepositoryInterface extends RepositoryInterface
+interface WishListRepositoryInterface
 {
     /**
      * @param CustomerInterface $customer
      *
-     * @return WishList|null
+     * @return null|WishListInterface
      */
-    public function findByCustomer(CustomerInterface $customer);
+    public function findWishListByCustomer(CustomerInterface $customer);
+
+    /**
+     * @param CustomerInterface $customer
+     *
+     * @return WishListInterface
+     */
+    public function createWishList(CustomerInterface $customer);
+
+    /**
+     * @param WishListInterface $wishList
+     * @param bool              $flush
+     */
+    public function updateWishList(WishListInterface $wishList, $flush = true);
+
+    /**
+     * @param WishListInterface $wishList
+     * @param bool              $flush
+     */
+    public function removeWishList(WishListInterface $wishList, $flush = true);
 }

@@ -36,7 +36,7 @@ class ProductFactoryExtension implements ProductFactoryExtensionInterface
     public function buildProductView(View $view, Product $product, array $options)
     {
         $customer = $this->customerLoader->load();
-        $wishList = $this->wishListRepository->findByCustomer($customer);
+        $wishList = $this->wishListRepository->findWishListByCustomer($customer);
 
         $ids = [];
         if ($wishList) {

@@ -54,7 +54,7 @@ class WishListController
     public function getWishList()
     {
         $customer = $this->customerLoader->load();
-        $wishList = $this->wishListRepository->findByCustomer($customer);
+        $wishList = $this->wishListRepository->findWishListByCustomer($customer);
 
         if (!$wishList) {
             $wishList = $this->wishListRepository->create();
@@ -71,7 +71,7 @@ class WishListController
     {
         $product  = $this->productRepository->get($productID);
         $customer = $this->customerLoader->load();
-        $wishList = $this->wishListRepository->findByCustomer($customer);
+        $wishList = $this->wishListRepository->findWishListByCustomer($customer);
 
         if (!$wishList) {
             $wishList = $this->wishListRepository->create();
@@ -88,7 +88,7 @@ class WishListController
     {
         $product  = $this->productRepository->get($productID);
         $customer = $this->customerLoader->load();
-        $wishList = $this->wishListRepository->findByCustomer($customer);
+        $wishList = $this->wishListRepository->findWishListByCustomer($customer);
 
         if ($wishList) {
             $this->wishListRepository->save($wishList->removeProduct($product));
