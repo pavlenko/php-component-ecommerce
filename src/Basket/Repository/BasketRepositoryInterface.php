@@ -2,17 +2,31 @@
 
 namespace PE\Component\ECommerce\Basket\Repository;
 
-use PE\Component\ECommerce\Basket\Entity\Basket;
-use PE\Component\ECommerce\Core\Repository\RepositoryInterface;
-use PE\Component\Query\Query;
+use PE\Component\ECommerce\Basket\Model\BasketInterface;
 
-/**
- * @method Basket   findOneByID($identifier)
- * @method Basket[] findAllByID(array $identifiers)
- * @method Basket   findOneBy(Query $query)
- * @method Basket[] findAllBy(Query $query)
- * @method Basket   get($identifier)
- * @method Basket   create()
- */
-interface BasketRepositoryInterface extends RepositoryInterface
-{}
+interface BasketRepositoryInterface
+{
+    /**
+     * @param string $id
+     *
+     * @return null|BasketInterface
+     */
+    public function findBasketByID($id);
+
+    /**
+     * @return BasketInterface
+     */
+    public function createBasket();
+
+    /**
+     * @param BasketInterface $basket
+     * @param bool            $flush
+     */
+    public function updateBasket(BasketInterface $basket, $flush = true);
+
+    /**
+     * @param BasketInterface $basket
+     * @param bool            $flush
+     */
+    public function removeBasket(BasketInterface $basket, $flush = true);
+}
