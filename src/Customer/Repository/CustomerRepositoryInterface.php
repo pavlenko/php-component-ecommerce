@@ -2,17 +2,31 @@
 
 namespace PE\Component\ECommerce\Customer\Repository;
 
-use PE\Component\ECommerce\Core\Repository\RepositoryInterface;
 use PE\Component\ECommerce\Customer\Model\CustomerInterface;
-use PE\Component\Query\Query;
 
-/**
- * @method CustomerInterface   findOneByID($identifier)
- * @method CustomerInterface[] findAllByID(array $identifiers)
- * @method CustomerInterface   findOneBy(Query $query)
- * @method CustomerInterface[] findAllBy(Query $query)
- * @method CustomerInterface   get($identifier)
- * @method CustomerInterface   create()
- */
-interface CustomerRepositoryInterface extends RepositoryInterface
-{}
+interface CustomerRepositoryInterface
+{
+    /**
+     * @param string $id
+     *
+     * @return null|CustomerInterface
+     */
+    public function findCustomerByID($id);
+
+    /**
+     * @return CustomerInterface
+     */
+    public function createCustomer();
+
+    /**
+     * @param CustomerInterface $customer
+     * @param bool $flush
+     */
+    public function updateCustomer(CustomerInterface $customer, $flush = true);
+
+    /**
+     * @param CustomerInterface $customer
+     * @param bool              $flush
+     */
+    public function removeCustomer(CustomerInterface $customer, $flush = true);
+}

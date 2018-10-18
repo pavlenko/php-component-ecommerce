@@ -12,7 +12,7 @@ interface WaitListRepositoryInterface
      *
      * @return null|WaitListInterface
      */
-    public function findByCustomer(CustomerInterface $customer);
+    public function findWaitListByCustomer(CustomerInterface $customer);
 
     /**
      * @param CustomerInterface $customer

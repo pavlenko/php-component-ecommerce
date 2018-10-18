@@ -55,7 +55,7 @@ class WaitListController
     public function getWaitList()
     {
         $customer = $this->customerLoader->load();
-        $wishList = $this->waitListRepository->findByCustomer($customer);
+        $wishList = $this->waitListRepository->findWaitListByCustomer($customer);
 
         if (!$wishList) {
             $wishList = $this->waitListRepository->create();
@@ -73,7 +73,7 @@ class WaitListController
         $customer = $this->customerLoader->load();
         $product  = $this->productRepository->get($productID);
 
-        $waitList = $this->waitListRepository->findByCustomer($customer);
+        $waitList = $this->waitListRepository->findWaitListByCustomer($customer);
 
         if (!$waitList) {
             $waitList = new WaitList();
@@ -91,7 +91,7 @@ class WaitListController
         $customer = $this->customerLoader->load();
         $product  = $this->productRepository->get($productID);
 
-        $waitList = $this->waitListRepository->findByCustomer($customer);
+        $waitList = $this->waitListRepository->findWaitListByCustomer($customer);
 
         if ($waitList) {
             $this->waitListRepository->save($waitList->removeProduct($product));

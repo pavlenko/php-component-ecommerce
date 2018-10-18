@@ -56,7 +56,7 @@ class WaitListManager
         $product  = $this->productRepository->findProductByID($productID);
 
         if ($customer && $product) {
-            $waitList = $this->waitListRepository->findByCustomer($customer);
+            $waitList = $this->waitListRepository->findWaitListByCustomer($customer);
 
             if (!$waitList) {
                 $waitList = $this->waitListRepository->createWaitList($customer);
@@ -77,7 +77,7 @@ class WaitListManager
         $product  = $this->productRepository->findProductByID($productID);
 
         if ($customer && $product) {
-            $waitList = $this->waitListRepository->findByCustomer($customer);
+            $waitList = $this->waitListRepository->findWaitListByCustomer($customer);
 
             if ($waitList) {
                 $waitListElement = $this->waitListElementRepository->findByWaitListAndProduct($waitList, $product);

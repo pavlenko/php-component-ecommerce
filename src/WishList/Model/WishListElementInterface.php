@@ -19,6 +19,18 @@ interface WishListElementInterface
     public function setID($id);
 
     /**
+     * @return WishListInterface
+     */
+    public function getWishList();
+
+    /**
+     * @param WishListInterface $wishList
+     *
+     * @return self
+     */
+    public function setWishList(WishListInterface $wishList);
+
+    /**
      * @return ProductInterface
      */
     public function getProduct();
