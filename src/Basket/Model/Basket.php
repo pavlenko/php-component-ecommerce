@@ -9,7 +9,7 @@ class Basket implements BasketInterface
     use MetadataAwareTrait;
 
     protected $id;
-    protected $purchases = [];
+    protected $elements = [];
 
     /**
      * @inheritDoc
@@ -31,18 +31,18 @@ class Basket implements BasketInterface
     /**
      * @inheritDoc
      */
-    public function getPurchases()
+    public function getElements()
     {
-        return $this->purchases;
+        return $this->elements;
     }
 
     /**
      * @inheritDoc
      */
-    public function addPurchase(BasketElementInterface $purchase)
+    public function addElement(BasketElementInterface $element)
     {
-        if (false === array_search($purchase, $this->purchases, true)) {
-            $this->purchases[] = $purchase;
+        if (!in_array($element, $this->elements, true)) {
+            $this->elements[] = $element;
         }
 
         return $this;
@@ -51,10 +51,10 @@ class Basket implements BasketInterface
     /**
      * @inheritDoc
      */
-    public function removePurchase(BasketElementInterface $purchase)
+    public function removeElement(BasketElementInterface $element)
     {
-        if (false !== ($key = array_search($purchase, $this->purchases, true))) {
-            unset($this->purchases[$key]);
+        if (false !== ($key = array_search($element, $this->elements, true))) {
+            unset($this->elements[$key]);
         }
 
         return $this;
