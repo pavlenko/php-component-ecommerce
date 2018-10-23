@@ -1,0 +1,107 @@
+{
+    "name": "sonata-project/ecommerce",
+    "type": "symfony-bundle",
+    "description": "E-Commerce solution provided by Sonata",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Rabaix",
+            "email": "thomas.rabaix@sonata-project.org",
+            "homepage": "https://sonata-project.org"
+        },
+        {
+            "name": "Sonata Community",
+            "homepage": "https://github.com/sonata-project/ecommerce/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "cocur/slugify": "^2.5 || ^3.0",
+        "knplabs/knp-menu-bundle": "^2.1",
+        "knplabs/knp-paginator-bundle": "^2.6",
+        "kriswallsmith/buzz": "^0.15 || ^0.16",
+        "sonata-project/admin-bundle": "^3.29",
+        "sonata-project/block-bundle": "^3.8",
+        "sonata-project/classification-bundle": "^3.3",
+        "sonata-project/comment-bundle": "^3.1",
+        "sonata-project/core-bundle": "^3.7",
+        "sonata-project/datagrid-bundle": "^2.3",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.2",
+        "sonata-project/formatter-bundle": "^3.4",
+        "sonata-project/intl-bundle": "^2.4",
+        "sonata-project/media-bundle": "^3.10",
+        "sonata-project/notification-bundle": "^3.3",
+        "sonata-project/seo-bundle": "^2.4",
+        "sonata-project/user-bundle": "^3.6 || ^4.0",
+        "symfony/config": "^3.4 || ^4.0",
+        "symfony/console": "^3.4 || ^4.0",
+        "symfony/dependency-injection": "^3.4 || ^4.0",
+        "symfony/doctrine-bridge": "^3.4 || ^4.0",
+        "symfony/event-dispatcher": "^3.4 || ^4.0",
+        "symfony/filesystem": "^3.4 || ^4.0",
+        "symfony/form": "^3.4 || ^4.0",
+        "symfony/framework-bundle": "^3.4 || ^4.0",
+        "symfony/http-foundation": "^3.4 || ^4.0",
+        "symfony/http-kernel": "^3.4 || ^4.0",
+        "symfony/intl": "^3.4 || ^4.0",
+        "symfony/options-resolver": "^3.4 || ^4.0",
+        "symfony/process": "^3.4 || ^4.0",
+        "symfony/property-access": "^3.4 || ^4.0",
+        "symfony/routing": "^3.4 || ^4.0",
+        "symfony/security-core": "^3.4 || ^4.0",
+        "symfony/security-http": "^3.4 || ^4.0",
+        "symfony/templating": "^3.4 || ^4.0",
+        "symfony/translation": "^3.4 || ^4.0",
+        "symfony/twig-bridge": "^3.4 || ^4.0",
+        "symfony/validator": "^3.4 || ^4.0"
+    },
+    "conflict": {
+        "friendsofsymfony/rest-bundle": "<2.2 || >=3.0",
+        "jms/serializer": "<0.13"
+    },
+    "require-dev": {
+        "friendsofsymfony/rest-bundle": "^2.2",
+        "jms/serializer-bundle": "^1.0 || ^2.0",
+        "nelmio/api-doc-bundle": "^2.13",
+        "symfony/phpunit-bridge": "^4.0"
+    },
+    "suggest": {
+        "friendsofsymfony/rest-bundle": "For using the public API methods.",
+        "jms/serializer": "For using the public API methods.",
+        "nelmio/api-doc-bundle": "For using the public API methods."
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Sonata\\Component\\": "src/Component",
+            "Sonata\\BasketBundle\\": "src/BasketBundle",
+            "Sonata\\CustomerBundle\\": "src/CustomerBundle",
+            "Sonata\\DeliveryBundle\\": "src/DeliveryBundle",
+            "Sonata\\InvoiceBundle\\": "src/InvoiceBundle",
+            "Sonata\\OrderBundle\\": "src/OrderBundle",
+            "Sonata\\PaymentBundle\\": "src/PaymentBundle",
+            "Sonata\\PriceBundle\\": "src/PriceBundle",
+            "Sonata\\ProductBundle\\": "src/ProductBundle"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sonata\\Component\\Tests\\": "tests/Component",
+            "Sonata\\BasketBundle\\Tests\\": "tests/BasketBundle",
+            "Sonata\\CustomerBundle\\Tests\\": "tests/CustomerBundle",
+            "Sonata\\DeliveryBundle\\Tests\\": "tests/DeliveryBundle",
+            "Sonata\\InvoiceBundle\\Tests\\": "tests/InvoiceBundle",
+            "Sonata\\OrderBundle\\Tests\\": "tests/OrderBundle",
+            "Sonata\\PaymentBundle\\Tests\\": "tests/PaymentBundle",
+            "Sonata\\PriceBundle\\Tests\\": "tests/PriceBundle",
+            "Sonata\\ProductBundle\\Tests\\": "tests/ProductBundle"
+        }
+    }
+}
