@@ -2,15 +2,41 @@
 
 namespace PE\Component\ECommerce\Basket\Loader;
 
-use PE\Component\ECommerce\Basket\Entity\Basket;
+use PE\Component\ECommerce\Basket\Factory\BasketFactoryInterface;
+use PE\Component\ECommerce\Basket\Model\BasketInterface;
 
 /**
  * This class loads basket for current user
  */
-abstract class BasketLoader
+class BasketLoader implements BasketLoaderInterface
 {
     /**
-     * @return Basket
+     * @var BasketFactoryInterface
      */
-    abstract public function load();
+    private $basketFactory;
+
+    /**
+     * @var BasketInterface
+     */
+    private $basket;
+
+    /**
+     * @param BasketFactoryInterface $basketFactory
+     */
+    public function __construct(BasketFactoryInterface $basketFactory)
+    {
+        $this->basketFactory = $basketFactory;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function loadBasket()
+    {
+        if (!$this->basket) {
+            $this->basket = $this->basketFactory->loadBasket();
+        }
+
+        return $this->basket;
+    }
 }
