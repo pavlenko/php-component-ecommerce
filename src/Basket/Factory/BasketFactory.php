@@ -5,13 +5,12 @@ namespace PE\Component\ECommerce\Basket\Factory;
 use PE\Component\ECommerce\Basket\Model\BasketElementInterface;
 use PE\Component\ECommerce\Basket\Model\BasketInterface;
 use PE\Component\ECommerce\Core\View\View;
-use PE\Component\ECommerce\Product\Factory\ProductFactory;
+use PE\Component\ECommerce\Product\Factory\ProductFactoryInterface;
 
 class BasketFactory implements BasketFactoryInterface
 {
     /**
-     * @TODO replace with interface
-     * @var ProductFactory
+     * @var ProductFactoryInterface
      */
     private $productFactory;
 
@@ -46,7 +45,7 @@ class BasketFactory implements BasketFactoryInterface
     {
         return new View([
             'id'       => $element->getID(),
-            'product'  => $this->productFactory->createView($element->getProduct()),
+            'product'  => $this->productFactory->createProductView($element->getProduct()),
             'quantity' => $element->getQuantity(),
         ]);
     }
