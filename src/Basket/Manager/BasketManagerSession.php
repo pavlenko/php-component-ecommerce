@@ -40,5 +40,7 @@ class BasketManagerSession extends BasketManagerBase
         $this->session->set(BasketInterface::class, $basket);
 
         $this->toCreate = $this->toUpdate = $this->toRemove = [];
+
+        return $this;
     }
 }

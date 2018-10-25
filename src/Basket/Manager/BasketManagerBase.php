@@ -68,6 +68,8 @@ abstract class BasketManagerBase implements BasketManagerInterface
 
             $basket->addElement($this->toCreate[] = $element);
         }
+
+        return $this;
     }
 
     /**
@@ -84,6 +86,8 @@ abstract class BasketManagerBase implements BasketManagerInterface
                 }
             }
         }
+
+        return $this;
     }
 
     /**
@@ -96,6 +100,8 @@ abstract class BasketManagerBase implements BasketManagerInterface
                 $basket->removeElement($this->toRemove[] = $element);
             }
         }
+
+        return $this;
     }
 
     /**
@@ -106,5 +112,7 @@ abstract class BasketManagerBase implements BasketManagerInterface
         foreach ($basket->getElements() as $element) {
             $basket->removeElement($this->toRemove[] = $element);
         }
+
+        return $this;
     }
 }

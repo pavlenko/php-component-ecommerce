@@ -26,5 +26,7 @@ class BasketManagerPersistent extends BasketManagerBase
         $this->basketRepository->updateBasket($basket);
 
         $this->toCreate = $this->toUpdate = $this->toRemove = [];
+
+        return $this;
     }
 }
