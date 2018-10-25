@@ -44,7 +44,7 @@ class Controller2
         // Managed wishlist wrapper version
         if ($manager = $this->wishListFactory->createManager()) {
             $manager->addElement($productID);
-            $manager->save();
+            $manager->saveWishList();
         }
     }
 
@@ -63,7 +63,7 @@ class Controller2
         // Managed wishlist wrapper version
         if ($manager = $this->wishListFactory->createManager()) {
             $manager->removeElement($productID);
-            $manager->save();
+            $manager->saveWishList();
         }
     }
 
@@ -81,8 +81,8 @@ class Controller2
 
         // Managed wishlist wrapper version
         if ($manager = $this->wishListFactory->createManager()) {
-            $manager->clear();
-            $manager->save();
+            $manager->clearWishList();
+            $manager->saveWishList();
         }
     }
 }

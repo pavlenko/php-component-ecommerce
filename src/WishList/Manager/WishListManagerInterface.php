@@ -7,31 +7,23 @@ use PE\Component\ECommerce\WishList\Model\WishListInterface;
 interface WishListManagerInterface
 {
     /**
-     * @return WishListInterface
-     */
-    public function getWishList();
-
-    /**
-     * @param string $productID Product id to create element by and add to list
+     * @param WishListInterface $wishList
+     * @param string            $productID
      *
      * @return self
      */
-    public function addElement($productID);
+    public function addElement(WishListInterface $wishList, $productID);
 
     /**
-     * @param string $productID Product id to find element by and remove from list
+     * @param WishListInterface $wishList
+     * @param string            $elementID
      *
      * @return self
      */
-    public function removeElement($productID);
+    public function removeElement(WishListInterface $wishList, $elementID);
 
     /**
      * @return self
      */
-    public function clear();
-
-    /**
-     * @return self
-     */
-    public function save();
+    public function saveWishList(WishListInterface $wishList);
 }
