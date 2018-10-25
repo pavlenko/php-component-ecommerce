@@ -31,11 +31,6 @@ class BasketManagerSession implements BasketManagerInterface
     private $session;
 
     /**
-     * @var BasketInterface
-     */
-    private $basket;
-
-    /**
      * @param BasketRepositoryInterface        $basketRepository
      * @param BasketElementRepositoryInterface $basketElementRepository
      * @param ProductRepositoryInterface       $productRepository
@@ -56,39 +51,27 @@ class BasketManagerSession implements BasketManagerInterface
     /**
      * @inheritDoc
      */
-    public function getBasket()
+    public function addElement(BasketInterface $basket, $productID)
     {
-        return $this->basket = $this->session->get(BasketInterface::class) ?: $this->basketRepository->createBasket();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function addElement($productID)
-    {
-        $this->getBasket();
-
         if ($product = $this->productRepository->findProductByID($productID)) {
             $element = $this->basketElementRepository->createElement();
-            $element->setBasket($this->basket);
+            $element->setBasket($basket);
             $element->setProduct($product);
             $element->setQuantity(1);
 
-            $this->basket->addElement($element);
+            $basket->addElement($element);
         }
     }
 
     /**
      * @inheritDoc
      */
-    public function updateElement($elementID, $quantity)
+    public function updateElement(BasketInterface $basket, $elementID, $quantity)
     {
-        $this->getBasket();
-
-        foreach ($this->basket->getElements() as $element) {
+        foreach ($basket->getElements() as $element) {
             if ($element->getID() == $elementID) {
                 if ($quantity < 1) {
-                    $this->basket->removeElement($element);
+                    $basket->removeElement($element);
                 } else {
                     $element->setQuantity($quantity);
                 }
@@ -99,13 +82,11 @@ class BasketManagerSession implements BasketManagerInterface
     /**
      * @inheritDoc
      */
-    public function removeElement($elementID)
+    public function removeElement(BasketInterface $basket, $elementID)
     {
-        $this->getBasket();
-
-        foreach ($this->basket->getElements() as $element) {
+        foreach ($basket->getElements() as $element) {
             if ($element->getID() == $elementID) {
-                $this->basket->removeElement($element);
+                $basket->removeElement($element);
             }
         }
     }
@@ -113,20 +94,18 @@ class BasketManagerSession implements BasketManagerInterface
     /**
      * @inheritDoc
      */
-    public function clearElements()
+    public function clearElements(BasketInterface $basket)
     {
-        $this->getBasket();
-
-        foreach ($this->basket->getElements() as $element) {
-            $this->basket->removeElement($element);
+        foreach ($basket->getElements() as $element) {
+            $basket->removeElement($element);
         }
     }
 
     /**
      * @inheritDoc
      */
-    public function saveBasket()
+    public function saveBasket(BasketInterface $basket)
     {
-        $this->session->set(BasketInterface::class, $this->basket);
+        $this->session->set(BasketInterface::class, $basket);
     }
 }

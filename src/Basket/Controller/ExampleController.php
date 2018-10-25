@@ -3,10 +3,16 @@
 namespace PE\Component\ECommerce\Basket\Controller;
 
 use PE\Component\ECommerce\Basket\Factory\BasketFactoryInterface;
+use PE\Component\ECommerce\Basket\Loader\BasketLoaderInterface;
 use PE\Component\ECommerce\Core\View\View;
 
 class ExampleController
 {
+    /**
+     * @var BasketLoaderInterface
+     */
+    private $loader;
+
     /**
      * @var BasketFactoryInterface
      */
@@ -17,7 +23,7 @@ class ExampleController
      */
     public function actionView()
     {
-        return $this->factory->createView($this->factory->createManager()->getBasket());
+        return $this->factory->createView($this->loader->loadBasket());
     }
 
     /**
@@ -27,11 +33,13 @@ class ExampleController
      */
     public function actionAdd($productID)
     {
+        $basket  = $this->loader->loadBasket();
         $manager = $this->factory->createManager();
-        $manager->addElement($productID);
-        $manager->saveBasket();
 
-        return $this->factory->createView($manager->getBasket());
+        $manager->addElement($basket, $productID);
+        $manager->saveBasket($basket);
+
+        return $this->factory->createView($basket);
     }
 
     /**
@@ -42,11 +50,13 @@ class ExampleController
      */
     public function actionUpdate($elementID, $quantity)
     {
+        $basket  = $this->loader->loadBasket();
         $manager = $this->factory->createManager();
-        $manager->updateElement($elementID, $quantity);
-        $manager->saveBasket();
 
-        return $this->factory->createView($manager->getBasket());
+        $manager->updateElement($basket, $elementID, $quantity);
+        $manager->saveBasket($basket);
+
+        return $this->factory->createView($basket);
     }
 
     /**
@@ -56,11 +66,13 @@ class ExampleController
      */
     public function actionRemove($elementID)
     {
+        $basket  = $this->loader->loadBasket();
         $manager = $this->factory->createManager();
-        $manager->removeElement($elementID);
-        $manager->saveBasket();
 
-        return $this->factory->createView($manager->getBasket());
+        $manager->removeElement($basket, $elementID);
+        $manager->saveBasket($basket);
+
+        return $this->factory->createView($basket);
     }
 
     /**
@@ -68,10 +80,12 @@ class ExampleController
      */
     public function actionClear()
     {
+        $basket  = $this->loader->loadBasket();
         $manager = $this->factory->createManager();
-        $manager->clearElements();
-        $manager->saveBasket();
 
-        return $this->factory->createView($manager->getBasket());
+        $manager->clearElements($basket);
+        $manager->saveBasket($basket);
+
+        return $this->factory->createView($basket);
     }
 }

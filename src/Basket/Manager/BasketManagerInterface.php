@@ -7,39 +7,41 @@ use PE\Component\ECommerce\Basket\Model\BasketInterface;
 interface BasketManagerInterface
 {
     /**
-     * @return BasketInterface
-     */
-    public function getBasket();
-
-    /**
-     * @param string $productID
+     * @param BasketInterface $basket
+     * @param string          $productID
      *
      * @return self
      */
-    public function addElement($productID);
+    public function addElement(BasketInterface $basket, $productID);
 
     /**
-     * @param string $elementID
-     * @param int    $quantity
+     * @param BasketInterface $basket
+     * @param string          $elementID
+     * @param int             $quantity
      *
      * @return self
      */
-    public function updateElement($elementID, $quantity);
+    public function updateElement(BasketInterface $basket, $elementID, $quantity);
 
     /**
-     * @param string $elementID
+     * @param BasketInterface $basket
+     * @param string          $elementID
      *
      * @return self
      */
-    public function removeElement($elementID);
+    public function removeElement(BasketInterface $basket, $elementID);
 
     /**
+     * @param BasketInterface $basket
+     *
      * @return self
      */
-    public function clearElements();
+    public function clearElements(BasketInterface $basket);
 
     /**
+     * @param BasketInterface $basket
+     *
      * @return self
      */
-    public function saveBasket();
+    public function saveBasket(BasketInterface $basket);
 }
