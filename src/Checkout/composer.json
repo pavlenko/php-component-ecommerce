@@ -2,6 +2,16 @@
     "name": "cmf/component-ecommerce-checkout",
     "description": "Checkout component",
     "require": {},
-    "require-dev": {},
-    "suggest": {}
+    "require-dev": {
+        "cmf/component-ecommerce-customer": "self.version",
+        "cmf/component-ecommerce-delivery": "self.version",
+        "cmf/component-ecommerce-order": "self.version",
+        "cmf/component-ecommerce-payment": "self.version"
+    },
+    "suggest": {
+        "cmf/component-ecommerce-customer": "For use customer identification",
+        "cmf/component-ecommerce-delivery": "For use delivery methods",
+        "cmf/component-ecommerce-order": "For use order history",
+        "cmf/component-ecommerce-payment": "For use payment methods"
+    }
 }
