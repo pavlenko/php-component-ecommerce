@@ -2,30 +2,30 @@
 
 namespace PE\Component\ECommerce\Basket\Loader;
 
-use PE\Component\ECommerce\Basket\Factory\BasketFactoryInterface;
 use PE\Component\ECommerce\Basket\Model\BasketInterface;
+use PE\Component\ECommerce\Basket\Repository\BasketRepositoryInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-/**
- * This class loads basket for current user
- */
 class BasketLoader implements BasketLoaderInterface
 {
     /**
-     * @var BasketFactoryInterface
+     * @var BasketRepositoryInterface
      */
-    private $basketFactory;
+    protected $basketRepository;
 
     /**
-     * @var BasketInterface
+     * @var SessionInterface
      */
-    private $basket;
+    protected $session;
 
     /**
-     * @param BasketFactoryInterface $basketFactory
+     * @param BasketRepositoryInterface $basketRepository
+     * @param SessionInterface          $session
      */
-    public function __construct(BasketFactoryInterface $basketFactory)
+    public function __construct(BasketRepositoryInterface $basketRepository, SessionInterface $session)
     {
-        $this->basketFactory = $basketFactory;
+        $this->basketRepository = $basketRepository;
+        $this->session          = $session;
     }
 
     /**
@@ -33,10 +33,12 @@ class BasketLoader implements BasketLoaderInterface
      */
     public function loadBasket()
     {
-        if (!$this->basket) {
-            $this->basket = $this->basketFactory->loadBasket();
+        $basket = $this->session->get(BasketInterface::class);
+
+        if (!($basket instanceof BasketInterface)) {
+            $this->session->set(BasketInterface::class, $basket = $this->basketRepository->createBasket());
         }
 
-        return $this->basket;
+        return $basket;
     }
 }
