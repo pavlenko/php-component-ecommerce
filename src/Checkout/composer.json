@@ -1,0 +1,7 @@
+{
+    "name": "cmf/component-ecommerce-checkout",
+    "description": "Checkout component",
+    "require": {},
+    "require-dev": {},
+    "suggest": {}
+}
