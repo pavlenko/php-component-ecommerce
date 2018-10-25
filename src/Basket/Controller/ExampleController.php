@@ -19,6 +19,16 @@ class ExampleController
     private $factory;
 
     /**
+     * @param BasketLoaderInterface  $loader
+     * @param BasketFactoryInterface $factory
+     */
+    public function __construct(BasketLoaderInterface $loader, BasketFactoryInterface $factory)
+    {
+        $this->loader  = $loader;
+        $this->factory = $factory;
+    }
+
+    /**
      * @return View
      */
     public function actionView()
