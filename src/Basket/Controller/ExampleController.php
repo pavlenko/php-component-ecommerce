@@ -23,7 +23,7 @@ class ExampleController
      */
     public function actionView()
     {
-        return $this->factory->createView($this->loader->loadBasket());
+        return $this->factory->createBasketView($this->loader->loadBasket());
     }
 
     /**
@@ -39,7 +39,7 @@ class ExampleController
         $manager->addElement($basket, $productID);
         $manager->saveBasket($basket);
 
-        return $this->factory->createView($basket);
+        return $this->factory->createBasketView($basket);
     }
 
     /**
@@ -56,7 +56,7 @@ class ExampleController
         $manager->updateElement($basket, $elementID, $quantity);
         $manager->saveBasket($basket);
 
-        return $this->factory->createView($basket);
+        return $this->factory->createBasketView($basket);
     }
 
     /**
@@ -72,7 +72,7 @@ class ExampleController
         $manager->removeElement($basket, $elementID);
         $manager->saveBasket($basket);
 
-        return $this->factory->createView($basket);
+        return $this->factory->createBasketView($basket);
     }
 
     /**
@@ -86,6 +86,6 @@ class ExampleController
         $manager->clearElements($basket);
         $manager->saveBasket($basket);
 
-        return $this->factory->createView($basket);
+        return $this->factory->createBasketView($basket);
     }
 }
