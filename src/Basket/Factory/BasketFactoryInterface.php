@@ -2,19 +2,22 @@
 
 namespace PE\Component\ECommerce\Basket\Factory;
 
+use PE\Component\ECommerce\Basket\Manager\BasketManagerInterface;
 use PE\Component\ECommerce\Basket\Model\BasketInterface;
+use PE\Component\ECommerce\Core\View\View;
 
-//TODO SessionBasketFactory, PersistentBasketFactory
-//TODO Customer already exists: if logged in - get from db by user, else - create new model
 interface BasketFactoryInterface
 {
     /**
-     * @return BasketInterface
+     * @return BasketManagerInterface
      */
-    public function loadBasket();
+    public function createManager();
 
     /**
      * @param BasketInterface $basket
+     * @param array           $options
+     *
+     * @return View
      */
-    public function saveBasket(BasketInterface $basket);
+    public function createView(BasketInterface $basket, array $options = []);
 }
