@@ -12,18 +12,18 @@ interface WishListManagerInterface
     public function getWishList();
 
     /**
-     * @param string $productID
+     * @param string $productID Product id to create element by and add to list
      *
      * @return self
      */
     public function addElement($productID);
 
     /**
-     * @param string $elementID
+     * @param string $productID Product id to find element by and remove from list
      *
      * @return self
      */
-    public function removeElement($elementID);
+    public function removeElement($productID);
 
     /**
      * @return self

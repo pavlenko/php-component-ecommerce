@@ -48,21 +48,21 @@ class Controller2
         }
     }
 
-    public function actionRemove($elementID)
+    public function actionRemove($productID)
     {
         // extended version
         $wishList = $this->loader->load();
         if (!$wishList) {
             throw new \Exception('Unauthorized, no customer');
         }
-        $this->manager->removeElement($wishList, $elementID);
+        $this->manager->removeElement($wishList, $productID);
         $this->manager->save($wishList);
 
 
 
         // Managed wishlist wrapper version
         if ($manager = $this->wishListFactory->createManager()) {
-            $manager->removeElement($elementID);
+            $manager->removeElement($productID);
             $manager->save();
         }
     }
