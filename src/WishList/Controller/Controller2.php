@@ -24,7 +24,7 @@ class Controller2
 
         // Managed wishlist wrapper version
         if ($manager = $this->wishListFactory->createManager()) {
-            return $this->wishListFactory->createView($manager->getWishList());
+            return $this->wishListFactory->createWishListView($manager->getWishList());
         }
 
         return false;//<-- Unauthorized, no customer

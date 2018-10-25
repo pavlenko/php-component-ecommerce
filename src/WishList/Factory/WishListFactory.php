@@ -3,48 +3,47 @@
 namespace PE\Component\ECommerce\WishList\Factory;
 
 use PE\Component\ECommerce\Core\View\View;
-use PE\Component\ECommerce\Customer\Factory\CustomerFactory;
-use PE\Component\ECommerce\Product\Entity\Product;
-use PE\Component\ECommerce\Product\Factory\ProductFactory;
-use PE\Component\ECommerce\WishList\Entity\WishList;
+use PE\Component\ECommerce\Product\Factory\ProductFactoryInterface;
+use PE\Component\ECommerce\WishList\Model\WishListElementInterface;
+use PE\Component\ECommerce\WishList\Model\WishListInterface;
 
-class WishListFactory
+class WishListFactory implements WishListFactoryInterface
 {
     /**
-     * @var CustomerFactory
-     */
-    private $customerFactory;
-
-    /**
-     * @var ProductFactory
+     * @var ProductFactoryInterface
      */
     private $productFactory;
 
     /**
-     * @param CustomerFactory $customerFactory
-     * @param ProductFactory  $productFactory
+     * @inheritDoc
      */
-    public function __construct(CustomerFactory $customerFactory, ProductFactory $productFactory)
+    public function createManager()
     {
-        $this->customerFactory = $customerFactory;
-        $this->productFactory  = $productFactory;
+        // TODO: Implement createManager() method.
     }
 
     /**
-     * @param WishList $wishList
-     * @param array    $options
-     *
-     * @return View
+     * @inheritDoc
      */
-    public function createView(WishList $wishList, array $options = [])
+    public function createWishListView(WishListInterface $list, array $options = [])
     {
-        $view = new View([
-            'customer' => $this->customerFactory->createView($wishList->getCustomer()),
-            'products' => array_map(function (Product $product) {
-                return $this->productFactory->createView($product);
-            }, $wishList->getProducts()),
-        ]);
+        $view = new View(['elements' => []]);
+
+        foreach ($list->getElements() as $element) {
+            $view->vars['elements'][] = $this->createElementView($element, $options);
+        }
 
         return $view;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function createElementView(WishListElementInterface $element, array $options = [])
+    {
+        return new View([
+            'id'      => $element->getID(),
+            'product' => $this->productFactory->createProductView($element->getProduct(), $options),
+        ]);
     }
 }
