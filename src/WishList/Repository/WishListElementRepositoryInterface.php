@@ -2,17 +2,27 @@
 
 namespace PE\Component\ECommerce\WishList\Repository;
 
+use PE\Component\ECommerce\Customer\Model\CustomerInterface;
+use PE\Component\ECommerce\Product\Model\ProductInterface;
 use PE\Component\ECommerce\WishList\Model\WishListElementInterface;
 use PE\Component\ECommerce\WishList\Model\WishListInterface;
 
 interface WishListElementRepositoryInterface
 {
     /**
-     * @param WishListInterface $list
+     * @param CustomerInterface $customer
+     * @param ProductInterface  $product
+     *
+     * @return int
+     */
+    public function countElementsByCustomerAndProduct(CustomerInterface $customer, ProductInterface $product);
+
+    /**
+     * @param WishListInterface $wishList
      *
      * @return WishListElementInterface[]
      */
-    public function findElementsByWishList(WishListInterface $list);
+    public function findElementsByWishList(WishListInterface $wishList);
 
     /**
      * @param string $id
