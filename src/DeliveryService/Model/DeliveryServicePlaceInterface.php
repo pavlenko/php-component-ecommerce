@@ -27,4 +27,16 @@ interface DeliveryServicePlaceInterface
      * @return self
      */
     public function setService(DeliveryServiceInterface $service);
+
+    /**
+     * @return string
+     */
+    public function getTitle();
+
+    /**
+     * @param string $title
+     *
+     * @return self
+     */
+    public function setTitle($title);
 }

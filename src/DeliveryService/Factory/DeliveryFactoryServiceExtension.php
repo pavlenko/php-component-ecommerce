@@ -23,10 +23,16 @@ class DeliveryFactoryServiceExtension implements DeliveryFactoryExtensionInterfa
 
         $service = $this->deliveryServiceRepository->findServiceByMethod($method);
         if ($service) {
+            $view->vars['places']  = [];
+            $view->vars['service'] = [
+                'id'    => $service->getID(),
+                'title' => $service->getTitle(),
+            ];
+
             foreach ($service->getPlaces() as $place) {
                 $view->vars['places'][] = [
-                    'id' => $service->getID(),
-                    //TODO other fields
+                    'id'    => $place->getID(),
+                    'title' => $place->getTitle(),
                 ];
             }
         }

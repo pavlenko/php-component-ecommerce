@@ -17,6 +17,18 @@ interface DeliveryServiceInterface
     public function setID($id);
 
     /**
+     * @return string
+     */
+    public function getTitle();
+
+    /**
+     * @param string $title
+     *
+     * @return self
+     */
+    public function setTitle($title);
+
+    /**
      * @return DeliveryServicePlaceInterface[]
      */
     public function getPlaces();
