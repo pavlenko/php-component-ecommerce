@@ -16,6 +16,7 @@
     "php": ">=5.5",
     "pe/component-query": "^1.0",
     "pe/component-simple-di": "^1.0",
+    "symfony/event-dispatcher": "^4.1",
     "symfony/http-foundation": "^3.4 || ^4.0"
   },
   "require-dev": {
