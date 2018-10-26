@@ -19,8 +19,6 @@ class DeliveryFactoryServiceExtension implements DeliveryFactoryExtensionInterfa
      */
     public function buildMethodView(View $view, DeliveryMethodInterface $method, array $options = [])
     {
-        $view->vars['places'] = [];
-
         $service = $this->deliveryServiceRepository->findServiceByMethod($method);
         if ($service) {
             $view->vars['places']  = [];

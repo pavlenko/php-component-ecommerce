@@ -2,23 +2,14 @@
 
 namespace PE\Component\ECommerce\WaitList\Manager;
 
-use PE\Component\ECommerce\Customer\Loader\CustomerLoaderInterface;
 use PE\Component\ECommerce\Product\Repository\ProductRepositoryInterface;
+use PE\Component\ECommerce\WaitList\Model\WaitListElementInterface;
+use PE\Component\ECommerce\WaitList\Model\WaitListInterface;
 use PE\Component\ECommerce\WaitList\Repository\WaitListElementRepositoryInterface;
 use PE\Component\ECommerce\WaitList\Repository\WaitListRepositoryInterface;
 
-class WaitListManager
+class WaitListManager implements WaitListManagerInterface
 {
-    /**
-     * @var CustomerLoaderInterface
-     */
-    private $customerLoader;
-
-    /**
-     * @var ProductRepositoryInterface
-     */
-    private $productRepository;
-
     /**
      * @var WaitListRepositoryInterface
      */
@@ -30,63 +21,66 @@ class WaitListManager
     private $waitListElementRepository;
 
     /**
-     * @param CustomerLoaderInterface            $customerLoader
-     * @param ProductRepositoryInterface         $productRepository
-     * @param WaitListRepositoryInterface        $waitListRepository
-     * @param WaitListElementRepositoryInterface $waitListElementRepository
+     * @var ProductRepositoryInterface
      */
-    public function __construct(
-        CustomerLoaderInterface $customerLoader,
-        ProductRepositoryInterface $productRepository,
-        WaitListRepositoryInterface $waitListRepository,
-        WaitListElementRepositoryInterface $waitListElementRepository
-    ) {
-        $this->customerLoader            = $customerLoader;
-        $this->productRepository         = $productRepository;
-        $this->waitListRepository        = $waitListRepository;
-        $this->waitListElementRepository = $waitListElementRepository;
+    private $productRepository;
+
+    /**
+     * @var WaitListElementInterface[]
+     */
+    private $toCreate = [];
+
+    /**
+     * @var WaitListElementInterface[]
+     */
+    private $toRemove = [];
+
+    /**
+     * @inheritDoc
+     */
+    public function addElement(WaitListInterface $waitList, $productID)
+    {
+        if ($product = $this->productRepository->findProductByID($productID)) {
+            $element = $this->waitListElementRepository->createElement();
+            $element->setProduct($product);
+
+            $waitList->addElement($this->toCreate[] = $element);
+        }
+
+        return $this;
     }
 
     /**
-     * @param string $productID
+     * @inheritDoc
      */
-    public function addProduct($productID)
+    public function removeElement(WaitListInterface $waitList, $elementID)
     {
-        $customer = $this->customerLoader->loadCustomer();
-        $product  = $this->productRepository->findProductByID($productID);
-
-        if ($customer && $product) {
-            $waitList = $this->waitListRepository->findWaitListByCustomer($customer);
-
-            if (!$waitList) {
-                $waitList = $this->waitListRepository->createWaitList($customer);
+        foreach ($waitList->getElements() as $element) {
+            if ($element->getID() == $elementID) {
+                $waitList->removeElement($this->toRemove[] = $element);
             }
-
-            $waitList->addElement($this->waitListElementRepository->createWaitListElement($product));
-
-            $this->waitListRepository->updateWaitList($waitList);
         }
+
+        return $this;
     }
 
     /**
-     * @param string $productID
+     * @inheritDoc
      */
-    public function removeProduct($productID)
+    public function saveWaitList(WaitListInterface $waitList)
     {
-        $customer = $this->customerLoader->loadCustomer();
-        $product  = $this->productRepository->findProductByID($productID);
-
-        if ($customer && $product) {
-            $waitList = $this->waitListRepository->findWaitListByCustomer($customer);
-
-            if ($waitList) {
-                $waitListElement = $this->waitListElementRepository->findByWaitListAndProduct($waitList, $product);
-
-                if ($waitListElement) {
-                    $this->waitListRepository->updateWaitList($waitList->removeElement($waitListElement));
-                    $this->waitListElementRepository->removeWaitListElement($waitListElement);
-                }
-            }
+        foreach ($this->toCreate as $element) {
+            $this->waitListElementRepository->removeElement($element);
         }
+
+        foreach ($this->toRemove as $element) {
+            $this->waitListElementRepository->updateElement($element);
+        }
+
+        $this->waitListRepository->updateWaitList($waitList);
+
+        $this->toCreate = $this->toRemove = [];
+
+        return $this;
     }
 }

@@ -23,6 +23,8 @@ interface WishListManagerInterface
     public function removeElement(WishListInterface $wishList, $elementID);
 
     /**
+     * @param WishListInterface $wishList
+     *
      * @return self
      */
     public function saveWishList(WishListInterface $wishList);

@@ -17,21 +17,19 @@ interface WaitListElementRepositoryInterface
     public function findByWaitListAndProduct(WaitListInterface $waitList, ProductInterface $product);
 
     /**
-     * @param ProductInterface $product
-     *
      * @return WaitListElementInterface
      */
-    public function createWaitListElement(ProductInterface $product);
+    public function createElement();
 
     /**
      * @param WaitListElementInterface $element
      * @param bool                     $flush
      */
-    public function updateWaitListElement(WaitListElementInterface $element, $flush = true);
+    public function updateElement(WaitListElementInterface $element, $flush = true);
 
     /**
      * @param WaitListElementInterface $element
      * @param bool                     $flush
      */
-    public function removeWaitListElement(WaitListElementInterface $element, $flush = true);
+    public function removeElement(WaitListElementInterface $element, $flush = true);
 }
