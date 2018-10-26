@@ -1,0 +1,9 @@
+{
+    "name": "cmf/component-ecommerce-delivery-courier",
+    "description": "",
+    "require": {
+        "cmf/component-ecommerce-delivery": "self.version"
+    },
+    "require-dev": {},
+    "suggest": {}
+}
