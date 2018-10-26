@@ -25,11 +25,11 @@ class WishListFactory implements WishListFactoryInterface
     /**
      * @inheritDoc
      */
-    public function createWishListView(WishListInterface $list, array $options = [])
+    public function createWishListView(WishListInterface $wishList, array $options = [])
     {
         $view = new View(['elements' => []]);
 
-        foreach ($list->getElements() as $element) {
+        foreach ($wishList->getElements() as $element) {
             $view->vars['elements'][] = $this->createElementView($element, $options);
         }
 

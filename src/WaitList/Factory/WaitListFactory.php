@@ -3,48 +3,47 @@
 namespace PE\Component\ECommerce\WaitList\Factory;
 
 use PE\Component\ECommerce\Core\View\View;
-use PE\Component\ECommerce\Customer\Factory\CustomerFactory;
-use PE\Component\ECommerce\Product\Entity\Product;
-use PE\Component\ECommerce\Product\Factory\ProductFactory;
-use PE\Component\ECommerce\WaitList\Entity\WaitList;
+use PE\Component\ECommerce\Product\Factory\ProductFactoryInterface;
+use PE\Component\ECommerce\WaitList\Model\WaitListElementInterface;
+use PE\Component\ECommerce\WaitList\Model\WaitListInterface;
 
-class WaitListFactory
+class WaitListFactory implements WaitListFactoryInterface
 {
     /**
-     * @var CustomerFactory
-     */
-    private $customerFactory;
-
-    /**
-     * @var ProductFactory
+     * @var ProductFactoryInterface
      */
     private $productFactory;
 
     /**
-     * @param CustomerFactory $customerFactory
-     * @param ProductFactory  $productFactory
+     * @param ProductFactoryInterface $productFactory
      */
-    public function __construct(CustomerFactory $customerFactory, ProductFactory $productFactory)
+    public function __construct(ProductFactoryInterface $productFactory)
     {
-        $this->customerFactory = $customerFactory;
         $this->productFactory  = $productFactory;
     }
 
     /**
-     * @param WaitList $wishList
-     * @param array    $options
-     *
-     * @return View
+     * @inheritDoc
      */
-    public function createView(WaitList $wishList, array $options = [])
+    public function createWaitListView(WaitListInterface $waitList, array $options = [])
     {
-        $view = new View([
-            'customer' => $this->customerFactory->createView($wishList->getCustomer()),
-            'products' => array_map(function (Product $product) {
-                return $this->productFactory->createView($product);
-            }, $wishList->getProducts()),
-        ]);
+        $view = new View(['elements' => []]);
+
+        foreach ($waitList->getElements() as $element) {
+            $view->vars['elements'][] = $this->createElementView($element, $options);
+        }
 
         return $view;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function createElementView(WaitListElementInterface $element, array $options = [])
+    {
+        return new View([
+            'id'      => $element->getID(),
+            'product' => $this->productFactory->createProductView($element->getProduct(), $options),
+        ]);
     }
 }

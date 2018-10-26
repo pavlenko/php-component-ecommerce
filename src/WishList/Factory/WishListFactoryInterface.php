@@ -15,12 +15,12 @@ interface WishListFactoryInterface
     public function createManager();
 
     /**
-     * @param WishListInterface $list
+     * @param WishListInterface $wishList
      * @param array             $options
      *
      * @return View
      */
-    public function createWishListView(WishListInterface $list, array $options = []);
+    public function createWishListView(WishListInterface $wishList, array $options = []);
 
     /**
      * @param WishListElementInterface $element
